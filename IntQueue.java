@@ -12,41 +12,65 @@ import static java.lang.System.*;
 
 public class IntQueue
 {
- //pick your storage for the queue
- //you can use the an array or an ArrayList
-
- //option 1
- private int[] rayOfInts;
- private int numInts;
 
  //option 2
  private ArrayList<Integer> listOfInts;
 
  public IntQueue()
  {
+  listOfInts = new ArrayList<Integer>();
  }
 
  public void add(int item)
  {
+  listOfInts.add(item);
  }
 
  public int remove()
  {
-  return 0;
+  if(!isEmpty()) {
+   return listOfInts.remove(0);
+ } else {
+   return -1;
+  }
  }
 
  public boolean isEmpty()
  {
-  return false;
+  return listOfInts.isEmpty();
  }
 
  public int peek()
  {
-  return 0;
+  if(!isEmpty()) {
+   return listOfInts.get(0);
+ } else {
+   return -1;
+  }
  }
 
  public String toString()
  {
-  return "";
+  StringBuilder sb = new StringBuilder();
+
+               
+                if(listOfInts.isEmpty()) {
+                        sb.append("[]");
+                        return sb.toString();
+                }
+
+              
+                sb.append("[");
+                int max = listOfInts.size() - 1;
+                for (int i = 0; i < listOfInts.size(); i++) {
+                        if(i == max) {
+                                sb.append(listOfInts.get(i));
+                        } else {
+                                sb.append(listOfInts.get(i)+",");
+                        }
+                }
+
+                sb.append("]");
+                //returns String return sb.toString();
  }
 }
